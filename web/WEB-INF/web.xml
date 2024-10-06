@@ -8,6 +8,18 @@
         <servlet-name>AddEventServlet</servlet-name>
         <servlet-class>com.controller.AddEventServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookViewServlet</servlet-name>
+        <servlet-class>com.controller.BookViewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EventViewsServlet</servlet-name>
+        <servlet-class>com.controller.EventViewsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EventViewServlet</servlet-name>
+        <servlet-class>com.controller.EventViewServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -15,5 +27,17 @@
     <servlet-mapping>
         <servlet-name>AddEventServlet</servlet-name>
         <url-pattern>/AddEventServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookViewServlet</servlet-name>
+        <url-pattern>/BookViewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EventViewsServlet</servlet-name>
+        <url-pattern>/EventViewsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EventViewServlet</servlet-name>
+        <url-pattern>/EventViewServlet</url-pattern>
     </servlet-mapping>
 </web-app>

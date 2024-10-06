@@ -6,25 +6,25 @@ package com.controller;
 
 import com.dao.BookDAO;
 import com.pojo.Event;
-
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletConfig;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author sneha
+ * @author dell
  */
-public class AddEventServlet extends HttpServlet {
-    RequestDispatcher  rd=null;
-    HttpSession session=null;
-    BookDAO bDAO=null;
+public class EventViewServlet extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,36 +34,32 @@ public class AddEventServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            session = request.getSession(true);
-            Event e = new Event(request.getParameter("event_name"),
-                    java.sql.Date.valueOf(request.getParameter("event_start_date")),
-                    java.sql.Date.valueOf(request.getParameter("event_end_date")),
-                                    request.getParameter("event_description"));
-            boolean hasInserted = bDAO.executeEventInsert(e);
-            rd = request.getRequestDispatcher("addEvent.jsp");
-            if(hasInserted){
-                session.setAttribute("fontcolor", "green");
-                session.setAttribute("result", "NEW EVENT CREATED"); 
-            }
-            else{
-                session.setAttribute("fontcolor", "red");
-                session.setAttribute("result", "NEW EVENT CREATION FAILED");
-            }
-            rd.forward(request, response);
-        }
-    }
-    @Override
-    public void init(ServletConfig config)throws ServletException{
-        System.out.println("Servlet Initialized");
-        bDAO = BookDAO.getInstance();
-        
-    }
+  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
 
+    response.setContentType("text/html;charset=UTF-8");
+    try {
+      System.out.print("inside eventVIew");
+
+        
+        ArrayList<Event> eventList = BookDAO.getInstance().executeEventSearch(); // Assuming EventDAO is your data access object for events
+
+        
+        HttpSession session = request.getSession(true);
+        
+        HashMap<String,String> eventNameIdPair = BookDAO.getInstance().executeEventID();
+        session.setAttribute("idlist",eventNameIdPair);
+        System.out.println(eventNameIdPair);
+        for(Event e:eventList){
+            System.out.print(e);
+        }
+        session.setAttribute("eventList", eventList);
+        RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+        rd.forward(request, response);
+    } catch (Exception ex) {
+        Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
