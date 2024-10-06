@@ -4,8 +4,16 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.controller.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddEventServlet</servlet-name>
+        <servlet-class>com.controller.AddEventServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEventServlet</servlet-name>
+        <url-pattern>/AddEventServlet</url-pattern>
     </servlet-mapping>
 </web-app>

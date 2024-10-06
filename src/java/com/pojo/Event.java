@@ -1,19 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.pojo; 
+package com.pojo;
 
 /**
  *
- * @author Batch1
+ * @author sneha
  */
 public class Event {
-   
     private String eventName;
-    private String eventSdate;
-    private String eventEdate;
+    private java.sql.Date eventSdate;
+    private java.sql.Date eventEdate;
     private String eventDescription;
     
     // Default constructor
@@ -22,17 +20,12 @@ public class Event {
     }
 
     // Parameterized constructor
-    public Event( String eventName, String eventSdate, String eventEdate, String eventDescription) {
-       
+    public Event(String eventName, java.sql.Date eventSdate, java.sql.Date eventEdate, String eventDescription) {
         this.eventName = eventName;
         this.eventSdate = eventSdate;
         this.eventEdate = eventEdate;
         this.eventDescription = eventDescription;
     }
-
-   
-    
-
     
     // Getter and Setter for eventName
     public String getEventName() {
@@ -44,20 +37,20 @@ public class Event {
     }
 
     // Getter and Setter for eventSdate
-    public String getEventSdate() {
+    public java.sql.Date getEventSdate() {
         return eventSdate;
     }
 
-    public void setEventSdate(String eventSdate) {
+    public void setEventSdate(java.sql.Date eventSdate) {
         this.eventSdate = eventSdate;
     }
 
     // Getter and Setter for eventEdate
-    public String getEventEdate() {
+    public java.sql.Date getEventEdate() {
         return eventEdate;
     }
 
-    public void setEventEdate(String eventEdate) {
+    public void setEventEdate(java.sql.Date eventEdate) {
         this.eventEdate = eventEdate;
     }
 

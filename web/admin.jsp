@@ -1,7 +1,7 @@
 <%-- 
-    Document   : admin.jsp
-    Created on : 06-Oct-2024, 1:20:57 pm
-    Author     : dell
+    Document   : admin
+    Created on : 6 Oct 2024, 2:06:47 pm
+    Author     : sneha
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,14 +11,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body><div><form action="addBook.jsp">
-            <button type="submit">Add Book</button>
-            </from></div>
-        <div> <form action="addEvent.jsp">
-            <button type="submit" onclick="">Add Event </button>
-            </from>
-        <div>
-          
-        <h1>Helglo World!</h1>
+    <body>
+        <a href="homePage.jsp">Home</a>
+        <a href="addEvent.jsp">Add Event</a>
+        <a href="sales.jsp">Sales</a>
+        <h1>Book Details</h1>
+        <a href="EventViewServlet">Event 1</a>
+        <a href="EventViewServlet">Event 2</a>
+        <a href="EventViewServlet">Event 3</a>
+        <a href="EventViewServlet">Event 4</a>
     </body>
 </html>

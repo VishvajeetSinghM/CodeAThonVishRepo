@@ -4,16 +4,19 @@
  */
 package com.controller;
 
+import com.dao.BookDAO;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
- * @author dell
+ * @author sneha
  */
 public class LoginServlet extends HttpServlet {
 
@@ -31,15 +34,25 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String username = request.getParameter("id");
+            String password = request.getParameter("pwd");
+            java.util.ArrayList userDetails= BookDAO.getInstance().executeLogin(username, password);
+            HttpSession session = request.getSession(true);
+            session.setAttribute("uname", userDetails.get(0));
+            session.setAttribute("pwd", userDetails.get(1));
+            String uname = (String)session.getAttribute("uname");
+            String pwd = (String)session.getAttribute("pwd");
+
+            if(uname.equalsIgnoreCase("BookPedlar") && pwd.equalsIgnoreCase("JavaJunction")){
+                    out.println("Welcome, "+uname);
+                    RequestDispatcher rd = request.getRequestDispatcher("/admin.jsp");
+                    rd.forward(request, response);
+                }
+            else{
+                    out.println("Welcome, "+uname);
+                    RequestDispatcher rd = request.getRequestDispatcher("/userDashboard.jsp");
+                    rd.forward(request, response);
+            }
         }
     }
 
