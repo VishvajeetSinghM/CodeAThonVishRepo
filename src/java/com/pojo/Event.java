@@ -10,7 +10,7 @@ package com.pojo;
  * @author Batch1
  */
 public class Event {
-    private int eventId;
+   
     private String eventName;
     private String eventSdate;
     private String eventEdate;
@@ -22,23 +22,18 @@ public class Event {
     }
 
     // Parameterized constructor
-    public Event(int eventId, String eventName, String eventSdate, String eventEdate, String eventDescription) {
-        this.eventId = eventId;
+    public Event( String eventName, String eventSdate, String eventEdate, String eventDescription) {
+       
         this.eventName = eventName;
         this.eventSdate = eventSdate;
         this.eventEdate = eventEdate;
         this.eventDescription = eventDescription;
     }
 
-    // Getter and Setter for eventId
-    public int getEventId() {
-        return eventId;
-    }
+   
+    
 
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
-    }
-
+    
     // Getter and Setter for eventName
     public String getEventName() {
         return eventName;
