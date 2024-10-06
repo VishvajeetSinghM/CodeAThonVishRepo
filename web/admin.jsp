@@ -11,12 +11,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
+    <body><div><form action="addBook.jsp">
+            <button type="submit">Add Book</button>
+            </from></div>
         <div> <form action="addEvent.jsp">
             <button type="submit" onclick="">Add Event </button>
             </from>
         <div>
           
-        <h1>Hello World!</h1>
+        <h1>Helglo World!</h1>
     </body>
 </html>
